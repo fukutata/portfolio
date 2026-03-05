@@ -1,0 +1,196 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.badge {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: .85rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp .8s .2s forwards;
+}
+
+.name {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.02em;
+  opacity: 0;
+  animation: fadeUp .9s .4s forwards;
+}
+
+.nameEn {
+  display: block;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  letter-spacing: .4em;
+  font-weight: 300;
+  color: rgba(255,255,255,.35);
+  margin-top: .5rem;
+}
+
+/* Glitch */
+.glitch { position: relative; }
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+}
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--accent2);
+  clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+  animation: glitch1 3.5s infinite;
+}
+.glitch::after {
+  left: -2px;
+  text-shadow: 2px 0 var(--accent);
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  animation: glitch2 3.5s infinite;
+}
+
+@keyframes glitch1 {
+  0%,90%,100% { transform: translate(0); opacity: 0; }
+  92% { transform: translate(-3px,1px); opacity: 1; }
+  94% { transform: translate(3px,-1px); opacity: 1; }
+  96% { transform: translate(0); opacity: 0; }
+}
+@keyframes glitch2 {
+  0%,90%,100% { transform: translate(0); opacity: 0; }
+  93% { transform: translate(3px,2px); opacity: 1; }
+  95% { transform: translate(-3px,-2px); opacity: 1; }
+  97% { transform: translate(0); opacity: 0; }
+}
+
+/* Typewriter */
+.typewriter {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--accent);
+  margin-top: 1.5rem;
+  min-height: 1.8em;
+  opacity: 0;
+  animation: fadeUp .8s .8s forwards;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink .7s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.location {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1.2rem;
+  color: rgba(255,255,255,.4);
+  font-size: .95rem;
+  opacity: 0;
+  animation: fadeUp .8s 1s forwards;
+}
+.location svg { color: var(--accent); }
+
+.cta {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: 3rem;
+  padding: .85rem 2.2rem;
+  border: 1px solid var(--accent);
+  border-radius: 50px;
+  color: var(--accent);
+  font-size: .95rem;
+  letter-spacing: .1em;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp .8s 1.2s forwards;
+  transition: color .3s;
+}
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s cubic-bezier(.76,0,.24,1);
+  z-index: -1;
+}
+.cta:hover::before { transform: scaleX(1); }
+.cta:hover { color: #000; }
+
+.scrollHint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+  opacity: 0;
+  animation: fadeIn 1s 1.6s forwards;
+}
+.scrollHint span {
+  font-size: .7rem;
+  letter-spacing: .2em;
+  color: rgba(255,255,255,.3);
+}
+.mouse {
+  width: 22px;
+  height: 36px;
+  border: 2px solid rgba(255,255,255,.25);
+  border-radius: 11px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+.mouse::after {
+  content: '';
+  width: 4px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 2px;
+  animation: scrollAnim 1.8s infinite;
+}
+
+@keyframes scrollAnim {
+  0% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 0; transform: translateY(0); }
+}

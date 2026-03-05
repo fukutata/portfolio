@@ -1,0 +1,41 @@
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 3rem;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  background: rgba(10,10,15,.6);
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 1.1rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: .05em;
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.links a {
+  color: rgba(255,255,255,.55);
+  font-size: .88rem;
+  letter-spacing: .08em;
+  transition: color .25s;
+}
+.links a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .nav { padding: 1rem 1.5rem; }
+  .links { gap: 1.2rem; }
+  .links a { font-size: .78rem; }
+}
